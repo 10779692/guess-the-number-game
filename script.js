@@ -16,6 +16,6 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'No number value defined!';
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent =
-      "You've guessed correctly! Congrats!";
+      "You've guessed correctly!";
   }
 });
