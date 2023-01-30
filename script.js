@@ -6,6 +6,7 @@
 // This takes the Math.random function, removes the decimals using Math.trunc, and gives it a value somewhere between 0 and 20 with the addition of +1 otherwise it will always be under 1, which is why we add the +1
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highScore = 0;
 
 // Click functionality
 document.querySelector('.check').addEventListener('click', function () {
@@ -29,6 +30,12 @@ document.querySelector('.check').addEventListener('click', function () {
 
     // Changes background color when number is guess correctly
     document.querySelector('body').style.backgroundColor = '#60b347';
+
+    // High score logic
+    if (score > highScore) {
+      highScore = score;
+    }
+    document.querySelector('.highscore').textContent = highScore;
 
     // When guess it too high
   } else if (guess > secretNumber) {
