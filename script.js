@@ -13,30 +13,47 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(typeof guess);
 
+  // When there is no input
   if (!guess) {
     document.querySelector('.message').textContent = 'No number value defined!';
+
+    // When player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent =
       "You've guessed correctly!";
+
+    // Changes width of displayed number when guessed correctly
+    document.querySelector('.number').style.width = '30rem';
+
+    // Changes background color when number is guess correctly
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    // When guess it too high
   } else if (guess > secretNumber) {
     // If score is greater than 1, then implement the following below up until the next else statement
     if (score > 1) {
       document.querySelector('.message').textContent =
         'Your number is too high. Guess again!';
+
       // Decreasing the score when the guess is too high
       score = score - 1;
+
       // This updates the score via the .querySelector method + .textContent setting it equal to score
       document.querySelector('.score').textContent = score;
     } else {
       document.querySelector('.message').textContent = 'You lost!';
       document.querySelector('.score').textContent = 0;
     }
+
+    // When guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent =
         'Your number is too low. Guess again!';
+
       // Decreasing the score when the guess is too high
       score = score - 1;
+
       // This updates the score via the .querySelector method + .textContent setting it equal to score
       document.querySelector('.score').textContent = score;
     } else {
