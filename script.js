@@ -4,9 +4,8 @@
 // Math.trunc removes the decimals and brings the number to a simple number
 
 // This takes the Math.random function, removes the decimals using Math.trunc, and gives it a value somewhere between 0 and 20 with the addition of +1 otherwise it will always be under 1, which is why we add the +1
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-document.querySelector('.number').textContent = secretNumber;
 
 // Click functionality
 document.querySelector('.check').addEventListener('click', function () {
@@ -21,6 +20,9 @@ document.querySelector('.check').addEventListener('click', function () {
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent =
       "You've guessed correctly!";
+
+    // Displays secret number when player wins
+    document.querySelector('.number').textContent = secretNumber;
 
     // Changes width of displayed number when guessed correctly
     document.querySelector('.number').style.width = '30rem';
@@ -61,4 +63,16 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+// Reset button logic
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.guess').value = '';
 });
